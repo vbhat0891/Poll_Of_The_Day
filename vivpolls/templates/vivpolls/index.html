@@ -1,0 +1,17 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'vivpolls/style.css' %}" />
+<h1 style="text-align: center;padding-top: 50px;color: darkgreen">Welcome to the Poll of the day</h1>
+<div style="text-align: left;padding-left: 100px;padding-top: 150px">
+<h2>
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li style="margin-bottom: 50px"><a href="{% url 'vivpolls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+</h2>
+</div>

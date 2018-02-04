@@ -1,0 +1,12 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'vivpolls/style.css' %}" />
+<h1 style="text-align: center;color: darkgreen; padding-top: 50px"> Results thus far</h1>
+<h1 style="text-align: left;padding-left: 150px; padding-top: 100px; color: darkgreen">{{ question.question_text }}</h1>
+
+<ul style="padding-top: 50px; padding-left: 180px">
+{% for choice in question.choice_set.all %}
+    <li style="padding-bottom: 20px">{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<a style="padding-left: 200px" href="{% url 'vivpolls:detail' question.id %}">Vote again?</a>

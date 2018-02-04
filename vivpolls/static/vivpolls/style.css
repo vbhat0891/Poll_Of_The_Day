@@ -1,0 +1,14 @@
+li a {
+    color: green;
+}
+
+
+body {
+    background: white url("images/background.gif") no-repeat right bottom;
+}
+
+
+div{
+    align-content: center;
+    padding: 50px;
+}

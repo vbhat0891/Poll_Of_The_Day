@@ -1,0 +1,16 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'vivpolls/style.css' %}" />
+<h1 style="text-align: center; color: darkgreen; padding-top: 50px">Cast your vote today!</h1>
+<h1 style="text-align: left; padding-top: 150px; padding-left: 80px; padding-bottom: 30px; color: darkgreen">{{ question.question_text }}</h1>
+
+
+{% if error_message %}<p style="text-align: left;padding-top: 100px"><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form style="text-align: left; padding-left: 100px" action="{% url 'vivpolls:vote' question.id %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br /><br />
+{% endfor %}
+<input style="margin-top: 20px; margin-left: 40px" type="submit" value="Vote" />
+</form>
