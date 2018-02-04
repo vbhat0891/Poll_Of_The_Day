@@ -1,0 +1,1 @@
+web: gunicorn vpolls.wsgi --log-file –
